@@ -37,53 +37,35 @@ let userMail = readlineSync.questionEMail('Please enter your e-mail address?  ')
 QRCode.toFile('./QR.png', 'Hi ' + userName + ' !' + 'Your password is ' + userMail);
 
 // class 題目三
-class Animal {
-    name: string;
-    height: number;
-    weight: number;
-    constructor(n: string, h: number, w: number) {
-        this.name = n;
-        this.height = h;
-        this.weight = w;
-    }
-    eat() {
-        console.log(this.name, 'I can eat');
-    }
-}
-let Animal01 = new Animal('大象',180,80);
-Animal01.eat();
-console.log(Animal01);
-//單純繼承
-class brid extends Animal{ //extends 繼承
-     constructor( name:string,height:number,weight:number){
-         super(name,height,weight) //super複寫
-     }
-}
-let brid01 = new brid('九官鳥',15,2);
-brid01.eat();
-console.log(brid01);
 
-//有條件繼承與新增條件
-class Animalxy {
-    constructor(public name: string) {
+class animal {  //先定義類別
+    constructor(
+        public name: string,
+        public weight: number,
+        public hight: number) {
     }
     eat() {
-        console.log(this.name, 'I can eat');
+        console.log('I\'m' , this.name, 'I can eat')
     }
 }
-class bridxy extends Animalxy{ //extends 繼承
-    constructor( name:string, public color:string){
-        super(name) //super複寫
+let animal01 = new animal('hello', 180, 20);
+animal01.eat();   //這部分類似Like的模式
+console.log(animal01);
+
+class bird extends animal {  //定義新類別 使用extends
+    constructor(name: string, weight: number, hight: number, public color: string) { //有新增的欄位定義，要用public
+        super(name, weight, hight) //super繼承父系，constructor有的，這邊就要有，除了public新增的例外
     }
-    fly(){
-        console.log('I\'m', this.name,'I can fly !')
+    fly() {
+        console.log('I\'m' , this.name, ' I can Fly!')
     }
-    eat(){
-        super.eat(); //super複寫
-        console.log('I\'m', this.name,'and i drink water');
+    eat() {
+        super.eat()
+        console.log('I Drank Water')
     }
 }
-let bridxy01 = new bridxy('鳳凰','Yellow');
-bridxy01.eat();
-bridxy01.fly();
-console.log(bridxy01);
+
+let bird01 = new bird('hi', 52, 10, 'yellow');
+console.log(bird01);
+bird01.eat();
+bird01.fly();
