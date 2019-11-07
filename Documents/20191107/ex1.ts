@@ -7,11 +7,9 @@ let question = function (q1: string, q2: string): string {
             ans = ans + 1;
         }
     }
-    console.log(ans);
-    return "it is ok";
+    return ans;
 }
-let x = question("abcdefgabcdabv", "a");
-console.log(x);
+console.log(question("abcdefgabcdabv", "a"));
 //function 題目一 或是 以下做法也可以
 let a = function (x: string, y: string) {
     let ans: number = 0;
@@ -27,6 +25,11 @@ let z = a( 'adfadfadfadfads' , 'a');
 console.log(z)
 
 // Qrcode題目二
+// npm i readline-sync
+// npm i @types/readline-sync
+// npm i qrcode
+// npm i @types/qrcode
+
 import * as readlineSync from 'readline-sync';
 import * as QRCode from 'qrcode';
 let userName = readlineSync.question('May I have your name? ');
@@ -73,11 +76,11 @@ class bridxy extends Animalxy{ //extends 繼承
         super(name) //super複寫
     }
     fly(){
-        console.log('I can fly !')
+        console.log('I\'m', this.name,'I can fly !')
     }
     eat(){
         super.eat(); //super複寫
-        console.log('and i drink water');
+        console.log('I\'m', this.name,'and i drink water');
     }
 }
 let bridxy01 = new bridxy('鳳凰','Yellow');
